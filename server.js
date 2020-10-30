@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const session = require('express-session')
 const methodOverride = require("method-override");
+const User = require("./models/users");
 
 // CONFIGURATION
 require("dotenv").config();
@@ -37,7 +38,15 @@ app.get("/", (req, res) => {
   res.send("Connection working");
 });
 
+app.get('/newUser', (req, res) => {
+  res.render('new.ejs')
+})
 
+app.post('/newUser', (req, res) => {
+  User.create(req.body, (err, newUser) => {
+    res.send(`Created! ${req.body.displayName}`)
+  })
+})
 
 // LISTENER
 app.listen(PORT, () => {

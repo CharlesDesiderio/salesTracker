@@ -33,20 +33,16 @@ mongoose.connect(mongoConnection, {
   console.log(`Connected to MONGODB at ${mongoConnection}`)
 })
 
+// CONTROLLERS
+const userController = require('./controllers/users.js')
+app.use('/users', userController)
+
 // BASIC ROUTES
 app.get("/", (req, res) => {
   res.send("Connection working");
 });
 
-app.get('/newUser', (req, res) => {
-  res.render('new.ejs')
-})
 
-app.post('/newUser', (req, res) => {
-  User.create(req.body, (err, newUser) => {
-    res.send(`Created! ${req.body.displayName}`)
-  })
-})
 
 // LISTENER
 app.listen(PORT, () => {

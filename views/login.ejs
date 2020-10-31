@@ -6,10 +6,19 @@
   <title>Document</title>
 </head>
 <body>
-  <form action="/users/login" method="POST">
-    <input type="text" name="username" />
-    <input type="password" name="password" />
-    <input type="submit" value="Login" />
-  </form>
+
+
+  <% if (user) { %>
+    Already logged in as <%= user.username %>
+    <a href="/users/logout">Logout</a>
+  <% } else { %>
+    <form action="/users/login" method="POST">
+      <input type="text" name="username" />
+      <input type="password" name="password" />
+      <input type="submit" value="Login" />
+    </form>
+  <% } %>
+
+
 </body>
 </html>

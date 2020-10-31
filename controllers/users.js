@@ -12,7 +12,19 @@ const isAuthenticated = (req, res, next) => {
 }
 
 users.get('/login', (req, res) => {
-  res.render('login.ejs')
+  res.render('login.ejs', {
+    user: req.session.currentUser
+  })
+})
+
+users.get('/logout', (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      res.send('Something went wrong')
+    } else {
+      res.redirect('/')
+    }
+  })
 })
 
 users.post('/login', (req, res) => {

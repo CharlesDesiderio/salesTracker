@@ -40,7 +40,10 @@ app.use('/users', userController)
 
 // BASIC ROUTES
 app.get("/", (req, res) => {
-  res.send("Connection working");
+  res.render('index.ejs', {
+    user: req.session.currentUser || false
+  })
+  
 });
 
 

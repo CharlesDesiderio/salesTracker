@@ -38,6 +38,9 @@ mongoose.connect(mongoConnection, {
 const userController = require('./controllers/users.js')
 app.use('/users', userController)
 
+const productController = require('./controllers/products.js')
+app.use('/products', productController)
+
 // BASIC ROUTES
 app.get("/", (req, res) => {
   res.render('index.ejs', {

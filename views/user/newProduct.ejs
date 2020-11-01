@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Listing</title>
+</head>
+<body>
+  <form action="/products/new" method="POST">
+    Name: <input type="text" required name="name" />
+    Price: <input type="number" required name="price" />
+    Image URL: <input type="text" name="imageUrl" />
+    Original URL: <input type="text" name="originalUrl" />
+    Tags: <input type="text" name="tags" />
+    <input type="submit" value="Create New Product" />
+  </form>
+</body>
+</html>

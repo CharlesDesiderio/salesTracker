@@ -6,6 +6,9 @@
   <title>New User</title>
 </head>
 <body>
+  <% if (err !== '') { %>
+    <p><%=err%></p>
+  <% } %>
   <form action="/users/new" method="POST">
     User name: <input type="text" name="username" required />
     Password: <input type="password" name="password" required />

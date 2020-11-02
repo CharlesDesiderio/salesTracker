@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editing <%=user[0].username%></title>
+</head>
+<body>
+  <form action="/users/<%=user[0]._id%>?_method=PUT" method="POST">
+    Display name: <input type="text" value="<%=user[0].displayName%>" name="displayName" required />
+    Email Address: <input type="email" value="<%=user[0].emailAddress%>" name="emailAddress" required />
+    <input type="submit" value="Edit User" />
+  </form>
+</body>
+</html>

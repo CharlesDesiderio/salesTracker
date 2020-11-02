@@ -3,7 +3,10 @@ const express = require('express')
 const bcrypt = require('bcrypt')
 const User = require('../models/users.js')
 const Product = require('../models/products.js')
+const methodOverride = require('method-override')
 const users = express.Router()
+
+users.use(methodOverride('_method'))
 
 // MIDDLEWARE
 const isAuthenticated = (req, res, next) => {
@@ -83,8 +86,25 @@ users.post('/new', (req, res) => {
 users.get('/profile', isAuthenticated, (req, res) => {
   Product.find({ ownerUsername: req.session.currentUser }, (err, foundProducts) => {
     res.render('user/profile.ejs', {
-      products: foundProducts
+      products: foundProducts,
+      currentUser: req.session.currentUser
     })
+  })
+})
+
+users.get('/:id/edit', isAuthenticated, (req, res) => {
+  User.find({ username: req.params.id }, (err, foundUser) => {
+    console.log(foundUser)
+    res.render('user/editUser.ejs', {
+      user: foundUser
+    })
+  })
+})
+
+users.put('/:id', isAuthenticated, (req, res) => {
+  User.findByIdAndUpdate(req.params.id, req.body, (err, updatedUser) => {
+    console.log(`Updated ${updatedUser}`)
+    res.redirect('/users/profile')
   })
 })
 

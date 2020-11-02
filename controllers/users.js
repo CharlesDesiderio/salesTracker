@@ -1,7 +1,9 @@
 const express = require('express')
 const bcrypt = require('bcrypt')
 const User = require('../models/users.js')
+const Product = require('../models/products.js')
 const users = express.Router()
+
 
 const isAuthenticated = (req, res, next) => {
   if (req.session.currentUser) {
@@ -55,6 +57,14 @@ users.post('/new', (req, res) => {
   User.create(req.body, (err, newUser) => {
     req.session.currentUser = req.body.username
     res.send(`Created! ${req.body.password}`)
+  })
+})
+
+users.get('/profile', isAuthenticated, (req, res) => {
+  Product.find({ ownerUsername: req.session.currentUser }, (err, foundProducts) => {
+    res.render('user/profile.ejs', {
+      products: foundProducts
+    })
   })
 })
 

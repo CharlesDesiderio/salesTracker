@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editing <%=product.name%></title>
+</head>
+<body>
+  <form action="/products/<%=product._id%>?_method=PUT" method="POST">
+    Name: <input type="text" required value="<%=product.name%>" name="name" />
+    Price: <input type="number" required value="<%=product.price%>" name="price" />
+    Image URL: <input type="text" value="<%=product.imageUrl%>" name="imageUrl" />
+    Original URL: <input type="text" value="<%=product.originalUrl%>" name="originalUrl" />
+    Tags: <input type="text" value="<%=product.tags%>" name="tags" />
+    <input type="submit" value="Create New Product" />
+  </form>
+</body>
+</html>

@@ -8,8 +8,10 @@
 <body>
   <% if (!user) { %>
     Not Logged in
+    <a href="/users/login">Please Log In</a>
   <% } else { %>
-    Currently Logged in as: <%= user.username %>
+    Currently Logged in as: <a href="/users/profile"><%= user.username %></a>
+    <a href="/users/logout">Logout</a>
   <% } %>
 </body>
 </html>

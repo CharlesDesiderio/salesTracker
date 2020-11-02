@@ -9,9 +9,12 @@
 
 
   <% if (user) { %>
-    Already logged in as <%= user.username %>
+    Already logged in as <%= user %>
     <a href="/users/logout">Logout</a>
   <% } else { %>
+    <%if (err !== '') { %>
+      <%=err%>
+    <% } %>
     <form action="/users/login" method="POST">
       <input type="text" name="username" />
       <input type="password" name="password" />

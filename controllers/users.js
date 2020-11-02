@@ -15,7 +15,8 @@ const isAuthenticated = (req, res, next) => {
 
 users.get('/login', (req, res) => {
   res.render('user/login.ejs', {
-    user: req.session.currentUser
+    user: req.session.currentUser,
+    err: req.session.err
   })
 })
 
@@ -36,13 +37,15 @@ users.post('/login', (req, res) => {
     if (err) {
       res.send('DB error!')
     } else if (!foundUser) {
-      res.send('User not found 🙁')
+      req.session.err = 'User not found'
+      res.redirect('/users/login')
     } else {
       if (bcrypt.compareSync(req.body.password, foundUser.password)) {
         req.session.currentUser = foundUser.username
-        res.send('Login successful!')
+        res.redirect('/users/profile')
       } else {
-        res.send('Invalid password!')
+        req.session.err = 'Invalid password'
+        res.redirect('/users/login')
       }
     }
   })

@@ -14,7 +14,7 @@ const isAuthenticated = (req, res, next) => {
 }
 
 users.get('/login', (req, res) => {
-  res.render('login.ejs', {
+  res.render('user/login.ejs', {
     user: req.session.currentUser
   })
 })
@@ -39,7 +39,7 @@ users.post('/login', (req, res) => {
       res.send('User not found 🙁')
     } else {
       if (bcrypt.compareSync(req.body.password, foundUser.password)) {
-        req.session.currentUser = foundUser
+        req.session.currentUser = foundUser.username
         res.send('Login successful!')
       } else {
         res.send('Invalid password!')
@@ -49,7 +49,7 @@ users.post('/login', (req, res) => {
 })
 
 users.get('/new', (req, res) => {
-  res.render('new.ejs')
+  res.render('user/new.ejs')
 })
 
 users.post('/new', (req, res) => {

@@ -1,10 +1,11 @@
+// DEPENDENCIES
 const express = require('express')
 const bcrypt = require('bcrypt')
 const User = require('../models/users.js')
 const Product = require('../models/products.js')
 const users = express.Router()
 
-
+// MIDDLEWARE
 const isAuthenticated = (req, res, next) => {
   if (req.session.currentUser) {
     return next()
@@ -13,6 +14,7 @@ const isAuthenticated = (req, res, next) => {
   }
 }
 
+// Display Login Page
 users.get('/login', (req, res) => {
   res.render('user/login.ejs', {
     user: req.session.currentUser,
@@ -20,7 +22,8 @@ users.get('/login', (req, res) => {
   })
 })
 
-users.get('/logout', (req, res) => {
+// Logout, redirect to root
+users.get('/logout', isAuthenticated, (req, res) => {
   req.session.destroy((err) => {
     if (err) {
       res.send('Something went wrong')
@@ -30,6 +33,7 @@ users.get('/logout', (req, res) => {
   })
 })
 
+// Login attempt
 users.post('/login', (req, res) => {
   User.findOne({
     username: req.body.username
@@ -52,18 +56,30 @@ users.post('/login', (req, res) => {
   })
 })
 
+// Display create new user form
 users.get('/new', (req, res) => {
-  res.render('user/new.ejs')
-})
-
-users.post('/new', (req, res) => {
-  req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
-  User.create(req.body, (err, newUser) => {
-    req.session.currentUser = req.body.username
-    res.send(`Created! ${req.body.password}`)
+  res.render('user/new.ejs', {
+    err: req.session.err
   })
 })
 
+// Create new user
+users.post('/new', (req, res) => {
+  User.find({ username: req.body.username }, (err, foundUser) => {
+    if (foundUser.length > 0) {
+      req.session.err = 'Username already exists'
+      res.redirect('/users/new')
+    } else {
+      req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
+      User.create(req.body, (err, newUser) => {
+        req.session.currentUser = req.body.username
+        res.send(`Created! ${req.body.username}`)
+      })
+    }
+  })
+})
+
+// View user profile
 users.get('/profile', isAuthenticated, (req, res) => {
   Product.find({ ownerUsername: req.session.currentUser }, (err, foundProducts) => {
     res.render('user/profile.ejs', {

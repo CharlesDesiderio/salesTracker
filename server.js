@@ -46,9 +46,7 @@ app.get("/", (req, res) => {
   res.render('index.ejs', {
     user: req.session.currentUser || false
   })
-  
 });
-
 
 
 // LISTENER

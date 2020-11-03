@@ -41,6 +41,11 @@ app.use('/users', userController)
 const productController = require('./controllers/products.js')
 app.use('/products', productController)
 
+const customerController = require('./controllers/customers.js')
+app.use('/customers', customerController)
+
+
+
 // BASIC ROUTES
 app.get("/", (req, res) => {
   res.render('index.ejs', {

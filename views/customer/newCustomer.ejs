@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Customer</title>
+</head>
+<body>
+  name: {
+    type: String,
+    required: true
+  },
+  address: String,
+  email: String,
+  phone: String,
+  purchaseHistory: [{
+    productId: {
+      type: String,
+      required: true
+    },
+    datePurchased: {
+      type: String,
+      required: true
+    },
+    purchasePrice: {
+      type: Number,
+      required: true
+    },
+    purchaseQuantity: {
+      type: Number,
+      required: true
+    }
+  }]
+
+  <form action="/customers/new" method="POST">
+    Customer Name: <input type="text" name="name" required />
+    Address: <input type="textarea" name="address" />
+    Email Address: <input type="email" name="email" />
+    Phone Number: <input type="text" name="phone" />
+    <input type="submit" value="Create Customer" />
+  </form>
+
+</body>
+</html>

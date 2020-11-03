@@ -49,6 +49,7 @@ users.post('/login', (req, res) => {
     } else {
       if (bcrypt.compareSync(req.body.password, foundUser.password)) {
         req.session.currentUser = foundUser.username
+        req.session.currentUserId = foundUser._id
         req.session.err = ''
         res.redirect('/users/profile')
       } else {

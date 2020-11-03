@@ -2,6 +2,7 @@
 const express = require('express')
 const Customer = require('../models/customers.js')
 // const Product = require('../models/products.js')
+const User = require('../models/users.js')
 const methodOverride = require('method-override')
 const customers = express.Router()
 customers.use(methodOverride('_method'))
@@ -20,7 +21,11 @@ customers.get('/new', isAuthenticated, (req, res) => {
 })
 
 customers.post('/new', (req, res) => {
-  // Customer.create
+  req.body.customerOf = req.session.currentUserId
+  req.body.purchaseHistory = []
+  Customer.create(req.body, (err, createdCustomer) => {
+    res.send(createdCustomer)
+  })
 })
 
 module.exports = customers

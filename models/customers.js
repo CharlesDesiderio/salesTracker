@@ -5,6 +5,10 @@ const customerSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  customerOf: {
+    type: String,
+    required: true
+  },
   address: String,
   email: String,
   phone: String,

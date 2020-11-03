@@ -54,7 +54,13 @@ products.get('/:id/edit', isAuthenticated, (req, res) => {
 products.post('/new', isAuthenticated, (req, res) => {
   req.body.ownerUsername = req.session.currentUser
   Product.create(req.body, (err, createdProduct) => {
-    res.send(`Creates ${req.body.name} for ${req.body.ownerUsername}`)
+    res.redirect('/users/profile')
+  })
+})
+
+products.delete('/:id', isAuthenticated, (req, res) => {
+  Product.findByIdAndDelete(req.params.id, (err, deletedProduct) => {
+    res.redirect('/users/profile')
   })
 })
 

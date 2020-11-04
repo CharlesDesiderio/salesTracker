@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%=customer.name%>></title>
+</head>
+<body>
+<!-- 
+  name: {
+    type: String,
+    required: true
+  },
+  address: String,
+  email: String,
+  phone: String,
+  purchaseHistory: [{
+    productId: {
+      type: String,
+      required: true
+    },
+    datePurchased: {
+      type: String,
+      required: true
+    },
+    purchasePrice: {
+      type: Number,
+      required: true
+    },
+    purchaseQuantity: {
+      type: Number,
+      required: true
+    }
+  }] -->
+
+  Name: <h1><%=customer.name%></h1>
+  Address: <h4><%=customer.address%></h4>
+  Email Address: <h4><%=customer.email%></h4>
+  Phone Number: <h4><%=customer.phone%></h4>
+  <% for (let i = 0; i < customer.purchaseHistory.length; i++) { %>
+    <ul>
+      <li><%=customer.purchaseHistory[i].productId%></li>
+      <li><%=customer.purchaseHistory[i].datePurchased%></li>
+      <li><%=customer.purchaseHistory[i].purchasePrice%></li>
+      <li><%=customer.purchaseHistory[i].purchaseQuantity%></li>
+    </ul>
+    <% } %>
+  
+</body>
+</html>

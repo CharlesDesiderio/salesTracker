@@ -24,7 +24,15 @@ customers.post('/new', (req, res) => {
   req.body.customerOf = req.session.currentUserId
   req.body.purchaseHistory = []
   Customer.create(req.body, (err, createdCustomer) => {
-    res.send(createdCustomer)
+    res.redirect('/users/profile')
+  })
+})
+
+customers.get('/:id', isAuthenticated, (req, res) => {
+  Customer.findById(req.params.id, (err, foundCustomer) => {
+    res.render('customer/viewCustomer.ejs', {
+      customer: foundCustomer
+    })
   })
 })
 

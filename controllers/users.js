@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt')
 const User = require('../models/users.js')
 const Product = require('../models/products.js')
 const methodOverride = require('method-override')
+const Customer = require('../models/customers.js')
 const users = express.Router()
 
 users.use(methodOverride('_method'))
@@ -86,10 +87,16 @@ users.post('/new', (req, res) => {
 // View user profile
 users.get('/profile', isAuthenticated, (req, res) => {
   Product.find({ ownerUsername: req.session.currentUser }, (err, foundProducts) => {
-    res.render('user/profile.ejs', {
-      products: foundProducts,
-      currentUser: req.session.currentUser
+    
+    Customer.find({ customerOf: req.session.currentUserId }, (err, foundCustomers) => {
+
+      res.render('user/profile.ejs', {
+        products: foundProducts,
+        customers: foundCustomers,
+        currentUser: req.session.currentUser
+      })
     })
+    
   })
 })
 

@@ -11,7 +11,7 @@
   <% } %>
 
   <% for (let j = 0; j < customers.length; j++) { %>
-    <p><a href="/customers/<%=customers[j]._id%>"><%= customers[j].name %></a></p>
+    <p><a href="/customers/<%=customers[j]._id%>"><%= customers[j].name %></a><a href="/products/newPurchase/<%=customers[j]._id%>">New Order</a></p>
   <% } %>
 
   <a href="/products/new">Create New Product</a>

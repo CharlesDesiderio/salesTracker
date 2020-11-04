@@ -39,10 +39,20 @@
   Phone Number: <h4><%=customer.phone%></h4>
   <% for (let i = 0; i < customer.purchaseHistory.length; i++) { %>
     <ul>
-      <li><%=customer.purchaseHistory[i].productId%></li>
-      <li><%=customer.purchaseHistory[i].datePurchased%></li>
+      <li>
+        <% for (let j = 0; j < products.length; j++) { %>
+          <% if (products[j]._id == customer.purchaseHistory[i].productId) { %>
+            <%= products[j].name %>
+          <% } %>
+        <% } %>
+
+      </li>
+      <!-- https://coderrocketfuel.com/article/convert-a-unix-timestamp-to-a-date-in-vanilla-javascript#create-human-friendly-date-strings -->
+      
+      <%= new Date(customer.purchaseHistory[i].datePurchased * 1).toDateString() %>
       <li><%=customer.purchaseHistory[i].purchasePrice%></li>
       <li><%=customer.purchaseHistory[i].purchaseQuantity%></li>
+      <li>Total Sale Price: $<%= customer.purchaseHistory[i].purchasePrice * customer.purchaseHistory[i].purchaseQuantity %></li>
     </ul>
     <% } %>
   

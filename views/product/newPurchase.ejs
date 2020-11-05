@@ -9,7 +9,7 @@
   <form action="/products/newPurchase/<%=customerId%>?_method=PUT" method="POST">
     <select name="productId" required>
       <% for (let i = 0; i < products.length; i++) { %>
-        <option value="<%=products[i]._id%>"><%=products[i].name%></option>
+        <option value="<%=products[i]._id%>"><%=products[i].name%> - $<%=products[i].price%></option>
       <% } %>
     </select>
     Quantity: <input type="number" name="purchaseQuantity" required />

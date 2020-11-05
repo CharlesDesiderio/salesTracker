@@ -2,15 +2,20 @@
 <html lang="en">
 <head>
   <%- include('../partials/head.ejs') %>
-  <title>Editing <%=user[0].username%></title>
+  <title>Editing <%=user.username%></title>
 </head>
 <body>
   <%- include('../partials/nav.ejs') %>
-  <form action="/users/<%=user[0]._id%>?_method=PUT" method="POST">
-    Display name: <input type="text" value="<%=user[0].displayName%>" name="displayName" required />
-    Email Address: <input type="email" value="<%=user[0].emailAddress%>" name="emailAddress" required />
-    <input type="submit" value="Edit User" />
-  </form>
+  <div class="editUserContainer">
+    <form action="/users/<%=user._id%>?_method=PUT" method="POST">
+      <label for="displayName">Display Name: </label><input type="text" value="<%=user.displayName%>" name="displayName" required />
+      <label for="emailAddress">Email Address: </label><input type="email" value="<%=user.emailAddress%>" name="emailAddress" required />
+      <input class="editUserContainerButton" type="submit" value="Update User" />
+    </form>
+  </div>
+  <div class="profileProductPageBack">
+    <a href="/users/profile">Return to Profile</a>
+  </div>
   <%- include('../partials/footer.ejs') %>
 </body>
 </html>

@@ -25,6 +25,7 @@ const isAuthenticated = (req, res, next) => {
 products.get('/new', isAuthenticated, (req, res) => {
   res.render('product/newProduct.ejs', {
     currentUser: req.session.currentUser,
+    currentUserId: req.session.currentUserId,
     currentUserDisplayName: req.session.currentUserDisplayName
   })
 })
@@ -34,6 +35,7 @@ products.get('/:id', isAuthenticated, (req, res) => {
   Product.findById(req.params.id, (err, foundProduct) => {
     res.render('product/showProduct.ejs', {
       currentUser: req.session.currentUser,
+      currentUserId: req.session.currentUserId,
       currentUserDisplayName: req.session.currentUserDisplayName,
       product: foundProduct,
     })
@@ -53,6 +55,7 @@ products.get('/:id/edit', isAuthenticated, (req, res) => {
     res.render('product/editProduct.ejs', {
       product: foundProduct,
       currentUser: req.session.currentUser,
+      currentUserId: req.session.currentUserId,
       currentUserDisplayName: req.session.currentUserDisplayName
     })
   })

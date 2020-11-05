@@ -328,3 +328,41 @@ footer {
 /* The edit form is literally a copy of the new form, so ... I copied the styles ¯\_(ツ)_/¯ */
 
 /* END STYLES FOR EDIT PRODUCT PAGE */
+
+/* BEGIN STYLES FOR EDIT USER PAGE */
+
+.editUserContainer {
+  width: 300px;
+  margin: auto;
+  padding: 1.5rem;
+  color: var(--color-4);
+  background-color: var(--color-2);
+  border-radius: 10px;
+  margin-top: 2rem;
+}
+
+.editUserContainer form {
+  display: flex;
+  flex-direction: column;
+}
+
+.editUserContainer input {
+  border: none;
+  padding: .25rem;
+  margin: .25rem;
+  margin-bottom: .5rem;
+  border-radius: 5px;
+}
+
+.editUserContainerButton {
+  font-size: 1.25rem;
+  color: var(--color-1);
+  background-color: var(--cta);
+}
+
+.editUserContainerButton:hover {
+  transform: scale(1.05);
+  transition: .2s;
+}
+
+/* END STYLES FOR EDIT USER PAGE */

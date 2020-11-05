@@ -23,6 +23,7 @@ users.get('/login', (req, res) => {
   res.render('user/login.ejs', {
     currentUser: req.session.currentUser,
     currentUserDisplayName: req.session.currentUserDisplayName,
+    currentUserId: req.session.currentUserId,
     err: req.session.err
   })
 })
@@ -68,6 +69,7 @@ users.get('/new', (req, res) => {
   res.render('user/new.ejs', {
     currentUser: req.session.currentUser,
     currentUserDisplayName: req.session.currentUserDisplayName,
+    currentUserId: req.session.currentUserId,
     err: req.session.err
   })
 })
@@ -96,7 +98,8 @@ users.get('/profile', isAuthenticated, (req, res) => {
         products: foundProducts,
         customers: foundCustomers,
         currentUser: req.session.currentUser,
-        currentUserDisplayName: req.session.currentUserDisplayName
+        currentUserDisplayName: req.session.currentUserDisplayName,
+        currentUserId: req.session.currentUserId
       })
     })
     
@@ -104,10 +107,11 @@ users.get('/profile', isAuthenticated, (req, res) => {
 })
 
 users.get('/:id/edit', isAuthenticated, (req, res) => {
-  User.find({ username: req.params.id }, (err, foundUser) => {
+  User.findById( req.params.id, (err, foundUser) => {
     res.render('user/editUser.ejs', {
       currentUser: req.session.currentUser,
       currentUserDisplayName: req.session.currentUserDisplayName,
+      currentUserId: req.session.currentUserId,
       user: foundUser
     })
   })

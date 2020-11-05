@@ -21,7 +21,7 @@ const isAuthenticated = (req, res, next) => {
 // Display Login Page
 users.get('/login', (req, res) => {
   res.render('user/login.ejs', {
-    user: req.session.currentUser,
+    currentUser: req.session.currentUser,
     err: req.session.err
   })
 })
@@ -64,6 +64,7 @@ users.post('/login', (req, res) => {
 // Display create new user form
 users.get('/new', (req, res) => {
   res.render('user/new.ejs', {
+    currentUser: req.session.currentUser,
     err: req.session.err
   })
 })
@@ -104,6 +105,7 @@ users.get('/:id/edit', isAuthenticated, (req, res) => {
   User.find({ username: req.params.id }, (err, foundUser) => {
     console.log(foundUser)
     res.render('user/editUser.ejs', {
+      currentUser: req.session.currentUser,
       user: foundUser
     })
   })

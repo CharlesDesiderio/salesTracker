@@ -37,7 +37,28 @@ customers.get('/:id', isAuthenticated, (req, res) => {
         products: foundProducts
       })
     })
+  })
+})
 
+customers.get('/:id/edit', isAuthenticated, (req, res) => {
+  Customer.findById(req.params.id, (err, foundCustomer) => {
+    res.render('customer/editCustomer.ejs', {
+      currentUser: req.session.currentUser,
+      customer: foundCustomer
+    })
+  })
+})
+
+customers.delete('/:id', isAuthenticated, (req, res) => {
+  Customer.findByIdAndDelete(req.params.id, (err, foundCustomer) => {
+    res.redirect('/users/profile')
+  })
+})
+
+customers.put('/:id', isAuthenticated, (req, res) => {
+  req.body.customerOf = req.session.currentUserId
+  Customer.findByIdAndUpdate(req.params.id, req.body, (err, foundCustomer) => {
+    res.redirect('/users/profile')
   })
 })
 

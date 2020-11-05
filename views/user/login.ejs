@@ -5,22 +5,24 @@
   <title>Login</title>
 </head>
 <body>
-
-
-  <% if (user) { %>
-    Already logged in as <%= user %>
+<%- include('../partials/nav.ejs') %>
+  <% if (currentUser) { %>
+    Already logged in as <%= currentUser %>
     <a href="/users/logout">Logout</a>
   <% } else { %>
     <%if (err !== '') { %>
       <%=err%>
     <% } %>
+    <div class="loginForm">
     <form action="/users/login" method="POST">
+      <label for="username">User Name</label>
       <input type="text" name="username" />
+      <label for="password">Password</label>
       <input type="password" name="password" />
-      <input type="submit" value="Login" />
+      <input class="loginFormButton" type="submit" value="Login" />
     </form>
+  </div>
   <% } %>
-
-
 </body>
+<%- include('../partials/footer.ejs') %>
 </html>

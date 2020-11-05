@@ -1,0 +1,11 @@
+<nav>
+  <div class="navTitle"><h3>productTrakr</h3></div>
+  <div>
+    <ul>
+      <% if (currentUser) { %>
+        <li><a href="/users/profile"><%=currentUser%></a></li>
+      <% } %>
+      <li><a href="/">Log Out</a></li>
+    </ul>
+  </div>
+</nav>

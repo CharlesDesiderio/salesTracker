@@ -1,3 +1,109 @@
-body {
-  background-color: pink;
+:root {
+  --color-1: #f1f6f9;
+  --color-2: #9BA4B4;
+  --color-3: #394867;
+  --color-4: #14274E;
+  --cta: #db6400;
 }
+
+body {
+  font-family: 'PT Sans', sans-serif;
+  background-color: var(--color-1);
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* BEGIN STYLES FOR NAV PARTIAL */
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: var(--color-4);
+  color: var(--color-1);
+}
+
+nav a {
+  text-decoration: none;
+}
+
+nav a:visited {
+  color: var(--color-1)
+}
+
+nav a:hover {
+  color: var(--color-3)
+}
+
+.navTitle {
+  padding-left: 2rem;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+li {
+  padding-right: 2rem;
+  list-style: none;
+}
+
+/* END STYLES FOR NAV PARTIAL */
+
+/* BEGIN STYLES FOR FOOTER */
+
+/* END STYLES FOR FOOTER */
+
+footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  background-color: var(--color-4);
+  color: var(--color-1);
+  padding: .25rem;
+}
+
+/* BEGIN STYLES FOR LOGIN FORM */
+
+.loginForm {
+  width: 400px;
+  margin: 3rem auto;
+  padding: 2rem 0;
+  background-color: var(--color-4);
+  border-radius: 10px;
+}
+
+.loginForm label {
+  margin: 0 auto;
+  color: var(--color-1);
+}
+
+.loginForm form {
+  display: flex;
+  flex-direction: column;
+}
+
+.loginForm input {
+  width: 60%;
+  margin: .5rem auto;
+  padding: .4rem;
+  border: none;
+  border-radius: 5px;
+}
+
+.loginFormButton {
+  background-color: var(--cta);
+  color: var(--color-1);
+  font-size: 1.25rem;
+  text-transform: uppercase;
+}
+
+.loginFormButton:hover {
+  transform: scale(1.1);
+  transition: .2s
+}
+
+/* END STYLES FOR LOGIN FORM */

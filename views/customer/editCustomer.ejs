@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editing <%=customer.name%></title>
+</head>
+<body>
+  <form action="/customers/<%=customer._id%>?_method=PUT" method="POST">
+    Customer Name: <input type="text" name="name" value="<%=customer.name%>" required />
+    Address: <input type="textarea" name="address" value="<%=customer.address%>" />
+    Email Address: <input type="email" name="email" value="<%=customer.email%>" />
+    Phone Number: <input type="text" name="phone" value="<%=customer.phone%>" />
+    <input type="submit" value="Update Customer" />
+  </form>
+
+  <form action="/customers/<%=customer._id%>?_method=DELETE" method="POST">
+    <input type="submit" value="Delete <%=customer.name%>" />
+  </form>
+</body>
+</html>

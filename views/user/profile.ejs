@@ -46,6 +46,7 @@
     <div class="customerInContainer">
       <span><a href="/customers/<%=customers[j]._id%>"><%= customers[j].name %></a></span>
       <div>
+        <span><%=customers[j].purchaseHistory.length%> <%= `order${customers[j].purchaseHistory.length === 1 ? '' : 's'}` %></span>
         <span><a href="/products/newPurchase/<%=customers[j]._id%>">New Order</a></span>
         <span><a href="/customers/<%=customers[j]._id%>/edit">Edit Customer</a></span>
       </div>
@@ -54,12 +55,8 @@
   <div class="customerInContainer createNewCustomer">
     <a href="/customers/new">Create New Customer</a>
   </div>
-
 </div>
-
-
-
-  <a href="/users/<%=currentUser%>/edit">Edit Profile</a>
+  <span>.</span>
   <%- include('../partials/footer.ejs') %>
 
 </div>

@@ -48,9 +48,11 @@ app.use('/customers', customerController)
 
 // BASIC ROUTES
 app.get("/", (req, res) => {
-  res.render('index.ejs', {
-    user: req.session.currentUser || false
-  })
+  if (!req.session.currentUser) {
+    res.redirect('/users/login')
+  } else {
+    res.redirect('/users/profile')
+  }
 });
 
 

@@ -51,7 +51,9 @@ products.put('/:id', isAuthenticated, (req, res) => {
 products.get('/:id/edit', isAuthenticated, (req, res) => {
   Product.findById(req.params.id, (err, foundProduct) => {
     res.render('product/editProduct.ejs', {
-      product: foundProduct
+      product: foundProduct,
+      currentUser: req.session.currentUser,
+      currentUserDisplayName: req.session.currentUserDisplayName
     })
   })
 })

@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%- include('../partials/head.ejs') %>
   <title>Editing <%=product.name%></title>
 </head>
 <body>
-  <form action="/products/<%=product._id%>?_method=PUT" method="POST">
-    Name: <input type="text" required value="<%=product.name%>" name="name" />
-    Price: <input type="number" required value="<%=product.price%>" name="price" />
-    Image URL: <input type="text" value="<%=product.imageUrl%>" name="imageUrl" />
-    Original URL: <input type="text" value="<%=product.originalUrl%>" name="originalUrl" />
-    Tags: <input type="text" value="<%=product.tags%>" name="tags" />
-    <input type="submit" value="Update Product" />
-  </form>
+  <%- include('../partials/nav.ejs') %>
+  <div class="productShowPage">
+    <form class="productCreatePageForm" action="/products/<%=product._id%>?_method=PUT" method="POST">
+      <label for="name">Name: </label><input type="text" required value="<%=product.name%>" name="name" />
+      <label for="price">Price: </label><input type="number" required value="<%=product.price%>" name="price" />
+      <label for="imageUrl">Image URL: </label><input type="text" value="<%=product.imageUrl%>" name="imageUrl" />
+      <label for="originalUrl">Original URL: </label><input type="text" value="<%=product.originalUrl%>" name="originalUrl" />
+      <label for="tags">Tags: </label><input type="text" alue="<%=product.tags%>" name="tags" />
+      <input class="createNewProductButton" type="submit" value="Update Product" />
+    </form>
+    
+  </div>
+
+  <%- include('../partials/footer.ejs') %>
+
 </body>
 </html>

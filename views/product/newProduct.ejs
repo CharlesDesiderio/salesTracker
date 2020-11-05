@@ -6,7 +6,6 @@
 </head>
 <body>
   <%- include('../partials/nav.ejs') %>
-
   <div class="productShowPage">
     <form class="productCreatePageForm" action="/products/new" method="POST">
       <label for="name">Name: </label><input type="text" required name="name" />
@@ -18,28 +17,6 @@
     </form>
     
   </div>
-
-
-  <!-- <div class="productShowPage">
-    < if (product.imageUrl) { >
-      <img class="profileProductImage" alt="<=product.name>" src="<=product.imageUrl>" />
-    < } else { >
-      <img class="profileProductImage" alt="No Image Available" src="/images/placeholder.png" />
-    < } >
-    <div class="productShowPageHeadline"><h1><=product.name></h1><h2>$<=product.price></h2></div>
-    <span>Product Origin:</span>
-    <h3><a href="<=product.originalUrl>"><=product.originalUrl></a></h3>
-    <h3>Tags: <=product.tags></h3>
-    <div class="showProductActions">
-      <a class="showProductActionsEditButton" href="/products/<=product._id>/edit">Edit Product</a>
-      <form action="/products/<=product._id>?_method=DELETE" method="POST">
-        <input class="showProductActionsDeleteButton" type="submit" value="DELETE" />
-      </form>
-    </div>
-  </div>
-  <div class="profileProductPageBack">
-    <a href="/users/profile">Return to Profile</a>
-  </div> -->
 
   <%- include('../partials/footer.ejs') %>
 

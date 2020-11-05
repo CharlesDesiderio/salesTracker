@@ -218,3 +218,78 @@ footer {
 }
 
 /* END STYLES FOR USER PROFILE PAGE */
+
+/* BEGIN STYLES FOR PRODUCT SHOW PAGE */
+
+.productShowPage {
+  width: 300px;
+  margin: auto;
+  padding: 1.5rem;
+  color: var(--color-4);
+  background-color: var(--color-2);
+  border-radius: 10px;
+  margin-top: 2rem;
+}
+
+.productShowPage h3 {
+  margin: .5rem 0;
+}
+
+.productShowPage a, .productShowPage a:visited {
+  color: var(--color-4);
+  text-decoration: none;
+}
+
+.productShowPage a:hover {
+  color: var(--color-1);
+  text-decoration: underline;
+}
+
+.showProductActions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-top: 1px dashed var(--color-4);
+  padding-top: .5rem;
+}
+
+.productShowPageHeadline {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.showProductActionsEditButton {
+  background-color: var(--color-4);
+  color: var(--color-1) !important;
+  padding: .25rem;
+  border-radius: 5px;
+}
+
+.showProductActionsEditButton:hover {
+  transform: scale(1.1);
+  transition: .2s;
+  text-decoration: none !important;
+}
+
+.showProductActionsDeleteButton {
+  border: none;
+  background-color: #aa0000;
+  color: var(--color-1) !important;
+  cursor: pointer;
+  padding: .25rem;
+  border-radius: 5px;
+  color: var(--color-4);
+}
+
+.showProductActionsDeleteButton:hover {
+  transform: scale(1.1);
+  transition: .2s;
+}
+
+.profileProductPageBack {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* END STYLES FOR PRODUCT SHOW PAGE */

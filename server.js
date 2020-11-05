@@ -44,8 +44,6 @@ app.use('/products', productController)
 const customerController = require('./controllers/customers.js')
 app.use('/customers', customerController)
 
-
-
 // BASIC ROUTES
 app.get("/", (req, res) => {
   if (!req.session.currentUser) {
@@ -54,7 +52,6 @@ app.get("/", (req, res) => {
     res.redirect('/users/profile')
   }
 });
-
 
 // LISTENER
 app.listen(PORT, () => {

@@ -22,6 +22,7 @@ const isAuthenticated = (req, res, next) => {
 users.get('/login', (req, res) => {
   res.render('user/login.ejs', {
     currentUser: req.session.currentUser,
+    currentUserDisplayName: req.session.currentUserDisplayName,
     err: req.session.err
   })
 })
@@ -51,6 +52,7 @@ users.post('/login', (req, res) => {
       if (bcrypt.compareSync(req.body.password, foundUser.password)) {
         req.session.currentUser = foundUser.username
         req.session.currentUserId = foundUser._id
+        req.session.currentUserDisplayName = foundUser.displayName
         req.session.err = ''
         res.redirect('/users/profile')
       } else {
@@ -65,6 +67,7 @@ users.post('/login', (req, res) => {
 users.get('/new', (req, res) => {
   res.render('user/new.ejs', {
     currentUser: req.session.currentUser,
+    currentUserDisplayName: req.session.currentUserDisplayName,
     err: req.session.err
   })
 })
@@ -88,13 +91,12 @@ users.post('/new', (req, res) => {
 // View user profile
 users.get('/profile', isAuthenticated, (req, res) => {
   Product.find({ ownerUsername: req.session.currentUser }, (err, foundProducts) => {
-    
     Customer.find({ customerOf: req.session.currentUserId }, (err, foundCustomers) => {
-
       res.render('user/profile.ejs', {
         products: foundProducts,
         customers: foundCustomers,
-        currentUser: req.session.currentUser
+        currentUser: req.session.currentUser,
+        currentUserDisplayName: req.session.currentUserDisplayName
       })
     })
     
@@ -103,9 +105,9 @@ users.get('/profile', isAuthenticated, (req, res) => {
 
 users.get('/:id/edit', isAuthenticated, (req, res) => {
   User.find({ username: req.params.id }, (err, foundUser) => {
-    console.log(foundUser)
     res.render('user/editUser.ejs', {
       currentUser: req.session.currentUser,
+      currentUserDisplayName: req.session.currentUserDisplayName,
       user: foundUser
     })
   })
@@ -113,7 +115,6 @@ users.get('/:id/edit', isAuthenticated, (req, res) => {
 
 users.put('/:id', isAuthenticated, (req, res) => {
   User.findByIdAndUpdate(req.params.id, req.body, (err, updatedUser) => {
-    console.log(`Updated ${updatedUser}`)
     res.redirect('/users/profile')
   })
 })

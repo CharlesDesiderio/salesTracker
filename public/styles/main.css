@@ -13,6 +13,11 @@ body {
   overflow-x: hidden;
 }
 
+.container {
+  min-height: 100vh;
+  position: relative;
+}
+
 /* BEGIN STYLES FOR NAV PARTIAL */
 
 nav {
@@ -54,7 +59,7 @@ li {
 
 /* BEGIN STYLES FOR FOOTER */
 
-/* END STYLES FOR FOOTER */
+/* Fix for footer: https://www.freecodecamp.org/news/how-to-keep-your-footer-where-it-belongs-59c6aa05c59c/ */
 
 footer {
   width: 100%;
@@ -65,6 +70,8 @@ footer {
   color: var(--color-1);
   padding: .25rem;
 }
+
+/* END STYLES FOR FOOTER */
 
 /* BEGIN STYLES FOR LOGIN FORM */
 
@@ -107,3 +114,107 @@ footer {
 }
 
 /* END STYLES FOR LOGIN FORM */
+
+/* BEGIN STYLES FOR USER PROFILE PAGE */
+
+.productListInProfile {
+  width: 70%;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.productInProfile {
+  width: 300px;
+  border-radius: 10px;
+  background-color: var(--color-2);
+}
+
+.profileProductImage {
+  margin: auto;
+  max-width: 300px;
+}
+
+.productDetailsInProfile {
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+.productListInProfile a, .productListInProfile a:visited {
+  color: var(--color-4);
+  text-decoration: none;
+}
+
+.productListInProfile a:hover {
+  transform: scale(1.04);
+  transition: .2s;
+  
+}
+
+.productDetailsInProfile h3, h4 {
+  margin: 0;
+  padding: .75rem;
+}
+
+.originalUrlLink {
+  position: absolute;
+}
+
+.myProductsH1 {
+  text-align: center;
+}
+
+.customersContainer {
+  width: 60%;
+  margin: auto;
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+}
+
+.customerInContainer {
+  background-color: var(--color-2);
+  font-size: 1.25rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.customerInContainer a, .customerInContainer a:visited {
+  color: var(--color-1);
+  text-decoration: none;
+}
+
+.customerInContainer a:hover {
+  color: var(--cta)
+}
+
+.customerInContainer span {
+  display: inline-block;
+  margin: .5rem;
+}
+
+.customerInContainer:nth-child(2) {
+  background-color: var(--color-3);
+}
+
+.createNewCustomer {
+  justify-content: center;
+  background-color: var(--cta);
+  padding: .25rem;
+  text-align: center;
+}
+
+.createNewCustomer a, .createNewCustomer a:visited {
+  color: var(--color-1)
+}
+
+.createNewCustomer a:hover {
+  font-size: 1.35rem;
+  transition: .3s;
+}
+
+/* END STYLES FOR USER PROFILE PAGE */

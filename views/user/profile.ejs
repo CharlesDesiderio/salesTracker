@@ -5,17 +5,63 @@
   <title>User Profile</title>
 </head>
 <body>
+  <div class="container">
+    
   <%- include('../partials/nav.ejs') %>
+  <h1 class="myProductsH1">My Products</h1>
+  <hr />
+  <div class="productListInProfile">
   <% for (let i = 0; i < products.length; i++) { %>
-    <p><a href="/products/<%=products[i]._id%>"><%=products[i].name%></a></p>
+    <a href="/products/<%=products[i]._id%>">
+    <div class="productInProfile">
+      <% if (products[i].imageUrl) { %>
+        <img class="profileProductImage" src="<%=products[i].imageUrl%>" />
+      <% } else { %>
+        <img class="profileProductImage" src="/images/placeholder.png" />
+      <% } %>
+      
+        <div class="productDetailsInProfile">
+          <h3><%=products[i].name%></h3>
+          <h4>$<%=products[i].price%></h4>
+        </div>
+    </div>
+  </a>
   <% } %>
+  <a href="/products/new">
+  <div class="productInProfile">
+    <img class="profileProductImage" src="/images/newitem.png" />
+    <div class="productDetailsInProfile">
+      <h3>Create New Item!</h3>
+      <h4></h4>
+    </div>
+  </div>
+</a>
+</div>
 
+<h1 class="myProductsH1">My Customers</h1>
+<hr />
+
+<div class="customersContainer">
   <% for (let j = 0; j < customers.length; j++) { %>
-    <p><a href="/customers/<%=customers[j]._id%>"><%= customers[j].name %></a><a href="/products/newPurchase/<%=customers[j]._id%>">New Order</a></p>
+    <div class="customerInContainer">
+      <span><a href="/customers/<%=customers[j]._id%>"><%= customers[j].name %></a></span>
+      <div>
+        <span><a href="/products/newPurchase/<%=customers[j]._id%>">New Order</a></span>
+        <span><a href="/customers/<%=customers[j]._id%>/edit">Edit Customer</a></span>
+      </div>
+    </div>
   <% } %>
+  <div class="customerInContainer createNewCustomer">
+    <a href="/customers/new">Create New Customer</a>
+  </div>
 
-  <a href="/products/new">Create New Product</a>
+</div>
+
+
+
   <a href="/users/<%=currentUser%>/edit">Edit Profile</a>
   <%- include('../partials/footer.ejs') %>
+
+</div>
 </body>
 </html>

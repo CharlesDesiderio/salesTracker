@@ -23,7 +23,10 @@ const isAuthenticated = (req, res, next) => {
 
 // Display create new product form
 products.get('/new', isAuthenticated, (req, res) => {
-  res.render('product/newProduct.ejs')
+  res.render('product/newProduct.ejs', {
+    currentUser: req.session.currentUser,
+    currentUserDisplayName: req.session.currentUserDisplayName
+  })
 })
 
 // Display individual product

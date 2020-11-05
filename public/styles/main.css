@@ -293,3 +293,32 @@ footer {
 }
 
 /* END STYLES FOR PRODUCT SHOW PAGE */
+
+/* BEGIN STYLES FOR NEW PRODUCT PAGE */
+
+.productCreatePageForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.productCreatePageForm input {
+  border: none;
+  border-radius: 5px;
+  padding: .5rem;
+  margin-bottom: .5rem;
+}
+
+.createNewProductButton {
+  font-size: 1.25rem;
+  color: var(--color-1);
+  background-color: var(--cta);
+  margin-top: .5rem;
+}
+
+.createNewProductButton:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  transition: .2s;
+}
+
+/* END STYLES FOR NEW PRODUCT PAGE */

@@ -10,9 +10,9 @@
 
   <div class="productShowPage">
     <% if (product.imageUrl) { %>
-      <img class="profileProductImage" src="<%=product.imageUrl%>" />
+      <img class="profileProductImage" alt="<%=product.name%>" src="<%=product.imageUrl%>" />
     <% } else { %>
-      <img class="profileProductImage" src="/images/placeholder.png" />
+      <img class="profileProductImage" alt="No Image Available" src="/images/placeholder.png" />
     <% } %>
     <div class="productShowPageHeadline"><h1><%=product.name%></h1><h2>$<%=product.price%></h2></div>
     <span>Product Origin:</span>

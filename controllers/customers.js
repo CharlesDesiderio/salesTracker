@@ -18,7 +18,11 @@ const isAuthenticated = (req, res, next) => {
 }
 
 customers.get('/new', isAuthenticated, (req, res) => {
-  res.render('customer/newCustomer.ejs')
+  res.render('customer/newCustomer.ejs', {
+    currentUser: req.session.currentUser,
+    currentUserDisplayName: req.session.currentUserDisplayName,
+    currentUserId: req.session.currentUserId
+  })
 })
 
 customers.post('/new', (req, res) => {
@@ -34,7 +38,10 @@ customers.get('/:id', isAuthenticated, (req, res) => {
     Customer.findById(req.params.id, (err, foundCustomer) => {
       res.render('customer/viewCustomer.ejs', {
         customer: foundCustomer,
-        products: foundProducts
+        products: foundProducts,
+        currentUser: req.session.currentUser,
+        currentUserDisplayName: req.session.currentUserDisplayName,
+        currentUserId: req.session.currentUserId
       })
     })
   })
@@ -44,6 +51,8 @@ customers.get('/:id/edit', isAuthenticated, (req, res) => {
   Customer.findById(req.params.id, (err, foundCustomer) => {
     res.render('customer/editCustomer.ejs', {
       currentUser: req.session.currentUser,
+      currentUserDisplayName: req.session.currentUserDisplayName,
+      currentUserId: req.session.currentUserId,
       customer: foundCustomer
     })
   })

@@ -366,3 +366,64 @@ footer {
 }
 
 /* END STYLES FOR EDIT USER PAGE */
+
+/* BEGIN STYLES FOR EDIT CUSTOMER  */
+
+.editCustomerContainer {
+  width: 300px;
+  margin: auto;
+  padding: 1.5rem;
+  color: var(--color-4);
+  background-color: var(--color-2);
+  border-radius: 10px;
+  margin-top: 2rem;
+}
+
+.editCustomerForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.editCustomerForm input {
+  border: none;
+  padding: .25rem;
+  margin: .25rem;
+  margin-bottom: .5rem;
+  border-radius: 5px;
+}
+
+.editCustomerButton {
+  font-size: 1.25rem;
+  color: var(--color-1);
+  background-color: var(--cta);
+}
+
+.editCustomerButton:hover {
+  transform: scale(1.05);
+  transition: .2s;
+}
+
+.deleteCustomerForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.deleteCustomerForm input {
+  border: none;
+  padding: .25rem;
+  margin: .25rem;
+  margin-bottom: .5rem;
+  border-radius: 5px;
+}
+
+.deleteCustomerButton {
+  font-size: 1.25rem;
+  background-color: #aa0000;
+  color: var(--color-1);
+}
+
+.deleteCustomerButton:hover {
+  transform: scale(1.05);
+  transition: .2s;
+}
+/* END STYLES FOR EDIT CUSTOMER */

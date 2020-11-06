@@ -16,10 +16,7 @@ const isAuthenticated = (req, res, next) => {
   }
 }
 
-// // I...actually don't think I need this?
-// products.get('/', isAuthenticated, (req, res) => {
-//   res.send('showing products')
-// })
+// ROUTES
 
 // Display create new product form
 products.get('/new', isAuthenticated, (req, res) => {
@@ -69,28 +66,35 @@ products.post('/new', isAuthenticated, (req, res) => {
   })
 })
 
+// Delete product
 products.delete('/:id', isAuthenticated, (req, res) => {
   Product.findByIdAndDelete(req.params.id, (err, deletedProduct) => {
     res.redirect('/users/profile')
   })
 })
 
+// Get create new purchase form
 products.get('/newPurchase/:id', isAuthenticated, (req, res) => {
   Product.find({ ownerUsername: req.session.currentUser }, (err, foundProducts) => {
-    console.log(foundProducts)
-    res.render('product/newPurchase.ejs', {
-      customerId: req.params.id,
-      products: foundProducts
+    Customer.findById(req.params.id, (err, foundCustomer) => {
+      res.render('product/newPurchase.ejs', {
+        customerId: req.params.id,
+        products: foundProducts,
+        customer: foundCustomer,
+        currentUser: req.session.currentUser,
+        currentUserId: req.session.currentUserId,
+        currentUserDisplayName: req.session.currentUserDisplayName
+      })
     })
   })
 })
 
+// Create new purchase
 products.put('/newPurchase/:id', isAuthenticated, (req, res) => {
   req.body.datePurchased = Date.now()
   Product.findById(req.body.productId, (err, foundItem) => {
     req.body.purchasePrice = foundItem.price
     Customer.findByIdAndUpdate(req.params.id, { $push: { purchaseHistory: req.body } }, (err, foundCustomer) => {
-      console.log(req.body)
       res.redirect('/users/profile')
     })
   })

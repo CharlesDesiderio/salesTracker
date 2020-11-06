@@ -1,34 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%- include('../partials/head.ejs') %>
   <title><%=customer.name%></title>
 </head>
 <body>
-<a href="/customers/<%=customer._id%>/edit">Edit Customer</a>
-  Name: <h1><%=customer.name%></h1>
-  Address: <h4><%=customer.address%></h4>
-  Email Address: <h4><%=customer.email%></h4>
-  Phone Number: <h4><%=customer.phone%></h4>
-  <% for (let i = 0; i < customer.purchaseHistory.length; i++) { %>
-    <ul>
-      <li>
-        <% for (let j = 0; j < products.length; j++) { %>
-          <% if (products[j]._id == customer.purchaseHistory[i].productId) { %>
-            <%= products[j].name %>
-          <% } %>
-        <% } %>
+  <%- include('../partials/nav.ejs') %>
+  <div class="viewCustomerContainer">
+    <div class="viewCustomerData">
+      <span></span><h1 class="viewCustomerDataHeader"><%=customer.name%></h1>
+      <span>Address: </span><h4 class="viewCustomerDataData"><%=customer.address%></h4>
+      <span>Email Address: </span><h4 class="viewCustomerDataData"><%=customer.email%></h4>
+      <span>Phone Number: </span><h4 class="viewCustomerDataData"><%=customer.phone%></h4>
+      <a class="editCustomer" href="/customers/<%=customer._id%>/edit">Edit Customer</a>
+    </div>
+    <div class="viewCustomerPurchases">
+      <div class="individualPurchase">
+        <div><strong>Name</strong></div>
+        <div><strong>Date</strong></div>
+        <div><strong>Price</strong></div>
+        <div><strong>Quantity</strong></div>
+        <div><strong>Total Sale</strong></div>
+      </div>
 
-      </li>
-      <!-- https://coderrocketfuel.com/article/convert-a-unix-timestamp-to-a-date-in-vanilla-javascript#create-human-friendly-date-strings -->
-      
-      <%= new Date(customer.purchaseHistory[i].datePurchased * 1).toDateString() %>
-      <li><%=customer.purchaseHistory[i].purchasePrice%></li>
-      <li><%=customer.purchaseHistory[i].purchaseQuantity%></li>
-      <li>Total Sale Price: $<%= customer.purchaseHistory[i].purchasePrice * customer.purchaseHistory[i].purchaseQuantity %></li>
-    </ul>
+      <% for (let i = 0; i < customer.purchaseHistory.length; i++) { %>
+      <div class="individualPurchase">
+        <div>
+          <% for (let j = 0; j < products.length; j++) { %>
+            <% if (products[j]._id == customer.purchaseHistory[i].productId) { %>
+              <%= products[j].name %>
+            <% } %>
+          <% } %>
+        </div>
+        <!-- https://coderrocketfuel.com/article/convert-a-unix-timestamp-to-a-date-in-vanilla-javascript#create-human-friendly-date-strings -->
+        <div><%= new Date(customer.purchaseHistory[i].datePurchased * 1).toDateString() %></div>
+        <div>$<%=customer.purchaseHistory[i].purchasePrice%></div>
+        <div><%=customer.purchaseHistory[i].purchaseQuantity%></div>
+        <div>$<%= customer.purchaseHistory[i].purchasePrice * customer.purchaseHistory[i].purchaseQuantity %></div>
+      </div>
     <% } %>
-  
+    <div class="individualPurchase createNewCustomer lastIndividualPurchase"><a href="/products/newPurchase/<%=customer._id%>">Create New Order</a></div>
+  </div>
+  </div>
+  <div class="profileProductPageBack">
+    <a href="/users/profile">Return to Profile</a>
+  </div>
+  <%- include('../partials/footer.ejs') %>
 </body>
 </html>

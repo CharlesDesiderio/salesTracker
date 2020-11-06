@@ -37,7 +37,7 @@ nav a:visited {
 }
 
 nav a:hover {
-  color: var(--color-3)
+  color: var(--cta)
 }
 
 .navTitle {
@@ -134,7 +134,8 @@ footer {
 
 .profileProductImage {
   margin: auto;
-  max-width: 300px;
+  height: 300px;
+  width: 300px;
 }
 
 .productDetailsInProfile {
@@ -197,7 +198,7 @@ footer {
   margin: .5rem;
 }
 
-.customerInContainer:nth-child(2) {
+.customerInContainer:nth-child(2n) {
   background-color: var(--color-3);
 }
 
@@ -427,3 +428,133 @@ footer {
   transition: .2s;
 }
 /* END STYLES FOR EDIT CUSTOMER */
+
+/* BEGIN STYLES FOR NEW PURCHASE FORM */
+
+.newPurchaseHeader {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.newPurchaseContainer {
+  width: 300px;
+  width: 300px;
+  margin: auto;
+  padding: 1.5rem;
+  color: var(--color-4);
+  background-color: var(--color-2);
+  border-radius: 10px;
+  margin-top: 2rem;
+}
+
+.newPurchaseForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.newPurchaseForm input, .newPurchaseForm select {
+  border: none;
+  padding: .25rem;
+  margin: .25rem;
+  margin-bottom: .5rem;
+  border-radius: 5px;
+}
+
+.newPurchaseButton {
+  font-size: 1.25rem;
+  color: var(--color-1);
+  background-color: var(--cta);
+}
+
+.newPurchaseButton:hover {
+  transform: scale(1.05);
+  transition: .2s;
+}
+
+/* END STYLES FOR NEW PURCHASE FORM */
+
+/* BEGIN STYLES FOR VIEW CUSTOMER */
+
+.viewCustomerContainer {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 2rem;
+}
+
+.viewCustomerData {
+  color: var(--color-4);
+  font-size: 1.25rem;
+  padding: 1rem;
+  border-radius: 5px;
+  width: 300px;
+  background-color: var(--color-2);
+}
+
+.viewCustomerPurchases {
+  width: 70%;
+}
+
+.lastIndividualPurchase {
+  background-color: var(--cta) !important;
+}
+
+.individualPurchase:nth-child(1) {
+  border-radius: 5px 5px 0 0;
+  background-color: var(--cta);
+}
+
+.individualPurchase:nth-child(2n) {
+  background-color: var(--color-4);
+}
+
+.individualPurchase {
+  font-size: 1.15rem;
+  padding: .25rem;
+  color: var(--color-1);
+  background-color: var(--color-3);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.individualPurchase div {
+  width: 200px;
+}
+
+.individualPurchase a {
+  text-decoration: none;
+}
+
+.viewCustomerDataHeader {
+  margin: .5rem;  
+}
+
+.viewCustomerDataData {
+  color: var(--color-4);
+  background-color: var(--color-1);
+  border-radius: 5px;
+  padding: .25rem;
+  margin: .25rem 0;
+}
+
+.editCustomer {
+  display: inline-block;
+  margin-top: 2rem;
+  border-radius: 5px;
+  color: var(--color-4);
+  padding: .5rem;
+  background-color: var(--cta);
+  text-decoration: none;
+  color: var(--color-1);
+  cursor: pointer;
+}
+
+.editCustomer:hover {
+  transform: scale(1.05);
+  transition: .2s;
+}
+
+/* END STYLES FOR VIEW CUSTOMER */

@@ -13,8 +13,11 @@
       <img class="profileProductImage" alt="No Image Available" src="/images/placeholder.png" />
     <% } %>
     <div class="productShowPageHeadline"><h1><%=product.name%></h1><h2>$<%=product.price%></h2></div>
-    <span>Product Origin:</span>
-    <h3><a href="<%=product.originalUrl%>"><%=product.originalUrl%></a></h3>
+    <!-- <span>Product Origin:</span> -->
+    <% if (product.originalUrl) { %>
+      <h3><a href="<%=product.originalUrl%>">Original Product</a></h3>
+    <% } %>
+    
     <!-- <h3>Tags: <%=product.tags%></h3> -->
     <div class="showProductActions">
       <a class="showProductActionsEditButton" href="/products/<%=product._id%>/edit">Edit Product</a>

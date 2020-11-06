@@ -18,6 +18,8 @@ const isAuthenticated = (req, res, next) => {
   }
 }
 
+// ROUTES
+
 // Display Login Page
 users.get('/login', (req, res) => {
   res.render('user/login.ejs', {
@@ -106,6 +108,7 @@ users.get('/profile', isAuthenticated, (req, res) => {
   })
 })
 
+// Get user edit form
 users.get('/:id/edit', isAuthenticated, (req, res) => {
   User.findById( req.params.id, (err, foundUser) => {
     res.render('user/editUser.ejs', {
@@ -117,6 +120,7 @@ users.get('/:id/edit', isAuthenticated, (req, res) => {
   })
 })
 
+// Update user
 users.put('/:id', isAuthenticated, (req, res) => {
   User.findByIdAndUpdate(req.params.id, req.body, (err, updatedUser) => {
     res.redirect('/users/profile')

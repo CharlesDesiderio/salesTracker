@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%- include('../partials/head.ejs') %>
   <title>New Customer</title>
 </head>
 <body>
-  <form action="/customers/new" method="POST">
-    Customer Name: <input type="text" name="name" required />
-    Address: <input type="textarea" name="address" />
-    Email Address: <input type="email" name="email" />
-    Phone Number: <input type="text" name="phone" />
-    <input type="submit" value="Create Customer" />
-  </form>
+  <%- include('../partials/nav.ejs') %>
+  <div class="editCustomerContainer">
 
+  <form class="editCustomerForm" action="/customers/new" method="POST">
+    <label for="">Customer Name: </label><input type="text" name="name" required />
+    <label for="">Address: </label><input type="textarea" name="address" />
+    <label for="">Email Address: </label><input type="email" name="email" />
+    <label for="">Phone Number: </label><input type="text" name="phone" />
+    <input class="editCustomerButton" type="submit" value="Create Customer" />
+  </form>
+  </div>
+  <div class="profileProductPageBack">
+    <a href="/users/profile">Return to Profile</a>
+  </div>
+  <%- include('../partials/footer.ejs') %>
 </body>
 </html>

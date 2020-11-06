@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%- include('../partials/head.ejs') %>
   <title>Document</title>
 </head>
 <body>
-  <form action="/products/newPurchase/<%=customerId%>?_method=PUT" method="POST">
-    <select name="productId" required>
-      <% for (let i = 0; i < products.length; i++) { %>
-        <option value="<%=products[i]._id%>"><%=products[i].name%> - $<%=products[i].price%></option>
-      <% } %>
-    </select>
-    Quantity: <input type="number" name="purchaseQuantity" required />
-    <input type="submit" value="Create Order" />
-  </form>
+  <%- include('../partials/nav.ejs') %>
+  <h3 class="newPurchaseHeader">New Purchase Order for <%=customer.name%></h3>
+  <div class="newPurchaseContainer">
+    <form class="newPurchaseForm" action="/products/newPurchase/<%=customerId%>?_method=PUT" method="POST">
+      <label for="productId">Product: </label>
+      <select name="productId" required>
+        <% for (let i = 0; i < products.length; i++) { %>
+          <option value="<%=products[i]._id%>"><%=products[i].name%> - $<%=products[i].price%></option>
+        <% } %>
+      </select>
+      <label for="purchaseQuantity">Quantity: </label> <input type="number" name="purchaseQuantity" required />
+      <input class="newPurchaseButton" type="submit" value="Create Order" />
+    </form>
+  </div>
+  <div class="profileProductPageBack">
+    <a href="/users/profile">Return to Profile</a>
+  </div>
+  <%- include('../partials/footer.ejs') %>
 </body>
 </html>

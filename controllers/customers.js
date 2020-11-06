@@ -17,6 +17,9 @@ const isAuthenticated = (req, res, next) => {
   }
 }
 
+// ROUTES
+
+// Get new customer creation form
 customers.get('/new', isAuthenticated, (req, res) => {
   res.render('customer/newCustomer.ejs', {
     currentUser: req.session.currentUser,
@@ -25,6 +28,7 @@ customers.get('/new', isAuthenticated, (req, res) => {
   })
 })
 
+// Post new customer
 customers.post('/new', (req, res) => {
   req.body.customerOf = req.session.currentUserId
   req.body.purchaseHistory = []
@@ -33,6 +37,7 @@ customers.post('/new', (req, res) => {
   })
 })
 
+// Customer show
 customers.get('/:id', isAuthenticated, (req, res) => {
   Product.find({ ownerUsername: req.session.currentUser }, (err, foundProducts) => {
     Customer.findById(req.params.id, (err, foundCustomer) => {
@@ -47,6 +52,8 @@ customers.get('/:id', isAuthenticated, (req, res) => {
   })
 })
 
+
+// Get customer edit form
 customers.get('/:id/edit', isAuthenticated, (req, res) => {
   Customer.findById(req.params.id, (err, foundCustomer) => {
     res.render('customer/editCustomer.ejs', {
@@ -58,12 +65,14 @@ customers.get('/:id/edit', isAuthenticated, (req, res) => {
   })
 })
 
+// Customer DELETE route
 customers.delete('/:id', isAuthenticated, (req, res) => {
   Customer.findByIdAndDelete(req.params.id, (err, foundCustomer) => {
     res.redirect('/users/profile')
   })
 })
 
+// Customer update (PUT) route
 customers.put('/:id', isAuthenticated, (req, res) => {
   req.body.customerOf = req.session.currentUserId
   Customer.findByIdAndUpdate(req.params.id, req.body, (err, foundCustomer) => {

@@ -46,8 +46,8 @@
       <span><a href="/customers/<%=customers[j]._id%>"><%= customers[j].name %></a></span>
       <div>
         <span><%=customers[j].purchaseHistory.length%> <%= `order${customers[j].purchaseHistory.length === 1 ? '' : 's'}` %></span>
-        <span><a href="/products/newPurchase/<%=customers[j]._id%>">New Order</a></span>
-        <span><a href="/customers/<%=customers[j]._id%>/edit">Edit Customer</a></span>
+        <span><a href="/products/newPurchase/<%=customers[j]._id%>">Create Order</a></span>
+        <!-- <span><a href="/customers/<%=customers[j]._id%>/edit">Edit Customer</a></span> -->
       </div>
     </div>
   <% } %>

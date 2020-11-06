@@ -6,9 +6,7 @@
 </head>
 <body>
   <%- include('../partials/nav.ejs') %>
-  <% if (err !== '') { %>
-    <p><%=err%></p>
-  <% } %>
+
   <form class="newUserForm" action="/users/new" method="POST">
     <label for="username">User name: </label><input type="text" name="username" required />
     <label for="password">Password: </label><input type="password" name="password" required />

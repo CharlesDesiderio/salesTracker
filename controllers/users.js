@@ -68,6 +68,7 @@ users.post('/login', (req, res) => {
 
 // Display create new user form
 users.get('/new', (req, res) => {
+  req.session.err = ''
   res.render('user/new.ejs', {
     currentUser: req.session.currentUser,
     currentUserDisplayName: req.session.currentUserDisplayName,

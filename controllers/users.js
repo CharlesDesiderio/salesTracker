@@ -86,8 +86,11 @@ users.post('/new', (req, res) => {
     } else {
       req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
       User.create(req.body, (err, newUser) => {
-        req.session.currentUser = req.body.username
-        res.send(`Created! ${req.body.username}`)
+        req.session.currentUser = foundUser.username
+        req.session.currentUserId = foundUser._id
+        req.session.currentUserDisplayName = foundUser.displayName
+        req.session.err = ''
+        res.redirect('/users/profile')
       })
     }
   })

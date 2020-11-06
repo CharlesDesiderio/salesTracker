@@ -73,7 +73,82 @@ footer {
 
 /* END STYLES FOR FOOTER */
 
+/* BEGIN STYLES FOR NEW USER FORM */
+
+.newUserForm {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin: 3rem auto;
+  padding: 2rem 0;
+  background-color: var(--color-4);
+  border-radius: 10px;
+}
+
+.newUserForm label {
+  margin: 0 auto;
+  color: var(--color-1);
+}
+
+.newUserForm form {
+  display: flex;
+  flex-direction: column;
+}
+
+.newUserForm input {
+  width: 60%;
+  margin: .5rem auto;
+  padding: .4rem;
+  border: none;
+  border-radius: 5px;
+}
+
+.newUserFormButton {
+  padding-top: 2rem;
+  background-color: var(--cta);
+  color: var(--color-1);
+  font-size: 1.25rem;
+}
+
+.newUserFormButton:hover {
+  transform: scale(1.1);
+  transition: .2s
+}
+
+/* END STYLES FOR NEW USER FORM */
+
 /* BEGIN STYLES FOR LOGIN FORM */
+
+.error {
+  font-size: 1.5rem;
+  padding: .5rem;
+  margin-top: 0;
+  background-color: #aa0000;
+  color: var(--color-1);
+  text-align: center;
+}
+
+.newUserLink {
+  text-align: center;
+  margin: auto;
+  width: 10%;
+  background-color: var(--cta);
+  font-size: 1.25rem;
+  color: var(--color-1);
+  padding: .5rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.newUserLink:hover {
+  transform: scale(1.03);
+  transition: .2s;
+}
+
+.newUserLink a, .newUserLink a:visited {
+  color: var(--color-1);
+  text-decoration: none;
+}
 
 .loginForm {
   width: 400px;

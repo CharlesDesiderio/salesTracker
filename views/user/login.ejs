@@ -11,7 +11,7 @@
     <a href="/users/logout">Logout</a>
   <% } else { %>
     <%if (err !== '') { %>
-      <%=err%>
+      <h3 class="error"><%=err%></h3>
     <% } %>
     <div class="loginForm">
     <form action="/users/login" method="POST">
@@ -23,6 +23,7 @@
     </form>
   </div>
   <% } %>
+  <div class="newUserLink" href="/users/new"><span><a href="/users/new">Create New User</a></span></div>
 </body>
 <%- include('../partials/footer.ejs') %>
 </html>

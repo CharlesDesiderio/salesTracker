@@ -131,7 +131,7 @@ footer {
 .newUserLink {
   text-align: center;
   margin: auto;
-  width: 10%;
+  width: 10rem;
   background-color: var(--cta);
   font-size: 1.25rem;
   color: var(--color-1);
@@ -633,3 +633,9 @@ footer {
 }
 
 /* END STYLES FOR VIEW CUSTOMER */
+
+@media only screen and (max-width: 600px) {
+  .loginForm {
+    width: 75%;
+  }
+}
